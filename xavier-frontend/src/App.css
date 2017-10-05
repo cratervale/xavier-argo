@@ -1,28 +1,89 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+  height: 80px; }
+
+.App {
+  height: 100%; }
 
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
-}
+  color: white; }
 
 .App-title {
-  font-size: 1.5em;
-}
+  font-size: 1.5em; }
 
 .App-intro {
-  font-size: large;
-}
+  font-size: large; }
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  height: 100%; }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+.appbar__menu-buttons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; }
+
+.storyedit {
+  margin-top: 2rem;
+  padding: 2rem; }
+  .storyedit__text-input-container {
+    display: flex;
+    flex-direction: column; }
+  .storyedit__body {
+    border: 2px solid #bebebe;
+    border-radius: 4px;
+    margin-top: .78rem;
+    height: 12rem;
+    resize: none;
+    padding: 1rem;
+    font-size: 1rem;
+    overflow: scroll; }
+  .storyedit__title {
+    font-size: 1rem; }
+  .storyedit__divider {
+    margin-top: 1rem;
+    margin-bottom: 1rem; }
+  .storyedit__buttons {
+    display: flex;
+    justify-content: flex-end; }
+  .storyedit__buttons-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between; }
+  .storyedit__delete-button {
+    align-self: flex-start; }
+
+.storylist {
+  margin-top: 3rem; }
+  .storylist__header {
+    color: #333;
+    margin-left: 1rem; }
+  .storylist__story {
+    border-bottom: 1px solid #efefef;
+    padding: 2rem; }
+    .storylist__story-title {
+      font-weight: 500;
+      font-size: 22px; }
+    .storylist__story-body {
+      font-size: 13px;
+      margin-bottom: 2rem; }
+    .storylist__story-datecreated {
+      font-variant: small-caps;
+      font-size: 12px;
+      margin-bottom: 1.8rem; }
+    .storylist__story-daterevised {
+      font-size: 10px; }
+    .storylist__story-edit-link {
+      text-decoration: none;
+      color: #999;
+      font-size: 11px; }

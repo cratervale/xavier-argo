@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {updateCurrent, saveStory, getStory, cancelEdit, deleteStory} from '../reducers/story';
+import {fetchStories} from '../reducers/stories';
+import AlertDialog from './AlertDialog'
+import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
+import Divider from 'material-ui/Divider';
+import TextField from 'material-ui/TextField';
 
 class StoryEdit extends Component{
 
@@ -12,14 +18,12 @@ class StoryEdit extends Component{
 
   handleSave = () => {
     this.props.saveStory()
-      .then(this.props.history.goBack())
+    .then(this.props.history.goBack())
   }
 
   handleDelete = () =>{
-    // if(confirm("Are you sure you want to delete this post?")){
       this.props.deleteStory(this.props.story.id)
-      this.props.history.goBack()
-    // }
+      .then(this.props.history.goBack())
   }
 
   handleCancel = () => {
@@ -39,21 +43,35 @@ class StoryEdit extends Component{
   render(){
     const {title, body} = this.props.story
     return (
-      <div>
-        <input type="text" name="title" placeholder="Title"
-          value={title}
-          onChange={this.handleInputChange}
-        />
-        <textarea name="body" value={body} onChange={this.handleInputChange}/>
-        {this.props.story.id && <button onClick={this.handleDelete}>Delete</button>}
-        <button onClick={this.handleCancel}>Cancel</button>
-        <button onClick={this.handleSave}>Save and Post</button>
-    </div>
+      <Paper className="storyedit">
+
+        <div className="storyedit__text-input-container">
+          <TextField
+            type="text"
+            className="storyedit__title"
+            name="title"
+            placeholder="Title"
+            value={title}
+            onChange={this.handleInputChange}
+          />
+          <textarea className="storyedit__body" name="body" value={body} onChange={this.handleInputChange}/>
+        </div>
+
+        <Divider className="storyedit__divider" />
+        <div className="storyedit__buttons-container">
+          {this.props.story.id && <AlertDialog  deleteStory={this.handleDelete} /> }
+          <div className="storyedit__buttons">
+
+            <Button onClick={this.handleCancel} color="secondary">Cancel</Button>
+            <Button onClick={this.handleSave} color="primary">Save and Post</Button>
+          </div>
+        </div>
+      </Paper>
     )
   }
 }
 
 export default connect(
   (state, ownProps) => ({story: state.story}),
-  {updateCurrent, saveStory, getStory, cancelEdit, deleteStory}
+  {updateCurrent, saveStory, getStory, cancelEdit, deleteStory, fetchStories}
 )(StoryEdit)

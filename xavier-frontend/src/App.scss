@@ -1,0 +1,136 @@
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+.App{
+  height: 100%;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.container{
+  max-width: 900px;
+  margin: auto;
+  height:100%;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.appbar{
+  &__menu-buttons{
+    flex:1;
+    display:flex;
+    justify-content: flex-end;
+  }
+}
+
+.storyedit{
+  margin-top: 2rem;
+  padding:2rem;
+
+  &__text-input-container{
+    display:flex;
+    flex-direction: column;
+    // height:12rem;
+
+  }
+
+  &__body{
+    border: 2px solid #bebebe;
+    border-radius: 4px;
+    margin-top: .78rem;
+    height:12rem;
+    resize: none;
+    padding:1rem;
+    font-size: 1rem;
+    overflow:scroll;
+  }
+
+  &__title{
+    font-size:1rem;
+  }
+
+  &__divider{
+    margin-top:1rem;
+    margin-bottom:1rem;
+
+  }
+
+  &__buttons{
+    display:flex;
+    justify-content: flex-end;
+
+  }
+
+  &__buttons-container{
+    margin-top: 1rem;
+    display:flex;
+    justify-content: space-between;
+  }
+  &__delete-button{
+    align-self: flex-start;
+  }
+}
+
+.storylist{
+  margin-top:3rem;
+
+  &__header{
+    color:#333;
+    margin-left:1rem;
+  }
+
+  &__story{
+    // margin-top:1.5rem;
+    // margin-bottom:1.5rem;
+    border-bottom: 1px solid #efefef;
+    padding: 2rem;
+
+    &-title{
+      font-weight:500;
+      font-size: 22px;
+
+    }
+    &-body{
+      font-size:13px;
+      margin-bottom: 2rem;
+
+
+    }
+    &-datecreated{
+      font-variant: small-caps;
+      font-size:12px;
+      margin-bottom: 1.8rem;
+
+    }
+    &-daterevised{
+      font-size:10px;
+      // font
+
+    }
+    &-edit-link{
+      text-decoration: none;
+      color: #999;
+      font-size: 11px;
+
+
+    }
+  }
+}

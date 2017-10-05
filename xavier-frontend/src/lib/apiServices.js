@@ -1,4 +1,5 @@
-const baseUrl = 'http://localhost:1337/api';
+// const baseUrl = 'http://localhost:1337/api';
+const baseUrl = '/api';
 
 const HEADERS = {
   'Accept': 'application/json',
@@ -6,41 +7,65 @@ const HEADERS = {
 };
 
 export const loadStories = () => {
-  return fetch(`${baseUrl}/Stories`)
-    .then((res) => {
-      const b = res.json();
-      return b
-    });
-}
+  return fetch(`${baseUrl}/Stories?filter[order]=createdAt DESC`)
+    .then((res) => res.json());
+};
 
-export const fetchStoryById = (storyId) => {
+export const fetchStoryById = (storyId, access_token='') => {
   console.log('loading story');
-  return fetch(`${baseUrl}/Stories/${storyId}`)
+  return fetch(`${baseUrl}/Stories/${storyId}?access_token=${access_token}`)
     .then((res) => {
       const b = res.json();
       return b;
     });
 };
 
-export const deleteStoryById = (storyId) => {
-  return fetch(`${baseUrl}/Stories/${storyId}`, {
+export const deleteStoryById = (storyId, access_token='') => {
+  return fetch(`${baseUrl}/Stories/${storyId}?access_token=${access_token}`, {
     method: 'DELETE',
     headers: HEADERS,
-  }).then(res => res.json());
-}
+  })
+    .then(
+      res => loadStories(),
+      error => error
+    );
+};
 
-export const createStory = (story) => {
-  return fetch(`${baseUrl}/Stories`, {
+export const createStory = (story, access_token='') => {
+  return fetch(`${baseUrl}/Stories?access_token=${access_token}`, {
     method: 'POST',
     headers: HEADERS,
     body: JSON.stringify(story),
-  }).then(res => res.json());
-}
+  })
+    .then(
+      res => loadStories(),
+      error => error
+    );
+};
 
-export const updateStory = (story) => {
-  return fetch(`${baseUrl}/Stories/${story.id}`, {
+export const login = (email, password) => {
+  return fetch(`${baseUrl}/Users/login`, {
+    method: 'POST',
+    headers: HEADERS,
+    body: JSON.stringify({email: email, password: password}),
+  }).then(res => res.json());
+};
+
+export const logout = (access_token='') => {
+  return fetch(`${baseUrl}/Users/logout?access_token=${access_token}`, {
+    method: 'POST',
+    headers: HEADERS,
+  });
+};
+
+export const updateStory = (story, access_token='') => {
+  return fetch(`${baseUrl}/Stories/${story.id}?access_token=${access_token}`, {
     method: 'PATCH',
     headers: HEADERS,
     body: JSON.stringify(story),
-  }).then(res => res.json());
-}
+  })
+    .then(
+      res => loadStories(),
+      error => error
+    );
+};
