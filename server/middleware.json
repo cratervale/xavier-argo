@@ -1,4 +1,9 @@
 {
+  "files": {
+    "loopback#static": {
+      "params": "$!../client"
+    }
+  },
   "initial:before": {
     "loopback#favicon": {}
   },
