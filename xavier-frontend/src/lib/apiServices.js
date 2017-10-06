@@ -1,5 +1,4 @@
-// const baseUrl = 'http://localhost:1337/api';
-const baseUrl = '/api';
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const HEADERS = {
   'Accept': 'application/json',

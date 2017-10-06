@@ -6,7 +6,6 @@ import TextField from 'material-ui/TextField';
 import Dialog, {
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
 } from 'material-ui/Dialog';
 

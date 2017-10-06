@@ -21,7 +21,6 @@ class App extends Component {
                 )} />
 
               <Route
-                exact
                 path="/admin"
                 render={({match, history}) => (
                 <AppBar editable={true} />

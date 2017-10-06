@@ -32,6 +32,8 @@
   flex: 1;
   display: flex;
   justify-content: flex-end; }
+  .appbar__menu-buttons a {
+    text-decoration: none; }
 
 .storyedit {
   margin-top: 2rem;

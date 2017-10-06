@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import storyReducer from './reducers/story';
 import storiesReducer from './reducers/stories';
 import sessionReducer from './reducers/session';
+import {persistStore, autoRehydrate} from 'redux-persist'
 
 const reducer = combineReducers({
   story: storyReducer,
@@ -11,9 +12,14 @@ const reducer = combineReducers({
   session: sessionReducer
 });
 
-export default createStore(
+const store = createStore(
   reducer,
   composeWithDevTools(
-    applyMiddleware(thunk)
+    applyMiddleware(thunk),
+    autoRehydrate()
   )
 );
+
+persistStore(store);
+
+export default store;

@@ -1,9 +1,4 @@
 {
-  "files": {
-    "loopback#static": {
-      "params": "$!../client"
-    }
-  },
   "initial:before": {
     "loopback#favicon": {}
   },
@@ -45,7 +40,11 @@
       ]
     }
   },
-  "files": {},
+  "files": {
+      "loopback#static": {
+      "params": "$!../client"
+    }
+  },
   "final": {
     "loopback#urlNotFound": {}
   },

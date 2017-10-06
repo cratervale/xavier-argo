@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {fetchStories} from '../reducers/stories'
 import {editStory} from '../reducers/story'
 import {Link} from 'react-router-dom'
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser'
+import ReactHtmlParser from 'react-html-parser'
 import moment from 'moment'
 
 const Story = ({editStory, story, user, editable}) => {
@@ -32,11 +32,11 @@ class StoryList extends Component {
   }
 
   render(){
-    // this.props.fetchStories()
-    const {stories} = this.props.stories
+    const hasPosts = (this.props.stories.length > 0)
+    const headerText = hasPosts ? 'Latest News' : 'News Section Coming Soon!';
     return(
       <div className="storylist">
-        <h3 className="storylist__header">Latest News</h3>
+        <h3 className="storylist__header">{headerText}</h3>
           {this.props.stories.map(story =>
             <Story
               editStory={this.handleEditStoryClick}

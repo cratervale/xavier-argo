@@ -1,5 +1,4 @@
 import {createStory, updateStory, fetchStoryById, deleteStoryById} from '../lib/apiServices';
-import {fetchStories} from './stories';
 
 const initState = {
   title: '',
